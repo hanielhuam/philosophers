@@ -6,18 +6,11 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 21:39:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/04 23:26:30 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:33:07 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static int	ft_isdigit(char c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
-}
 
 static int is_valid_number(char *str)
 {
@@ -43,7 +36,7 @@ int	validate_args(int argc, char **args)
 	i = 1;
 	while (i < argc)
 	{
-		if (!is_valid_number(args[i]))
+		if (!is_valid_number(args[i++]))
 		{
 			write(2, "number not aceptable\n", 21);
 			return (1);

@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRC_DIR = src
 OBJ_DIR = obj
-LDFLAGS =  -lpthread
+LDFLAGS = -lpthread
 INCLUDE = -Iinclude
 
 SRCS = ${SRC_DIR}/philo.c ${SRC_DIR}/validate_args.c ${SRC_DIR}/init_table.c \
