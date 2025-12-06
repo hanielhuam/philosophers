@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_table.c                                       :+:      :+:    :+:   */
+/*   time_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 22:58:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/05 23:40:27 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/05 23:20:16 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/05 23:40:22 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	init_philo(t_table *table)
+long	grt_current_time(void)
 {
-	int	i;
+	struct timeval	time;
+	long			time_ms;
 
-	i = 0;
-}
-
-int	init_table(int argc, char **argv, t_table *table)
-{
-	table->philo_nbr = ft_atoi(argv[1]);
-	table->die_time = ft_atoi(argv[2]);
-	table->eat_time = ft_atoi(argv[3]);
-	table->sleep_time = ft_atoi(argv[4]);
-	if (argc == 6)
-		table->satisfied_nbr = ft_atoi(argv[5]);
-	
-	return (0);
+	time_ms = 0l;
+	gettimeofday(&time, NULL);
+	time_ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (time_ml);
 }

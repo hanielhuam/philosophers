@@ -6,7 +6,8 @@ LDFLAGS = -lpthread
 INCLUDE = -Iinclude
 
 SRCS = ${SRC_DIR}/philo.c ${SRC_DIR}/validate_args.c ${SRC_DIR}/init_table.c \
-	   ${SRC_DIR}/dinner.c ${SRC_DIR}/number_utils.c
+	   ${SRC_DIR}/dinner.c ${SRC_DIR}/number_utils.c \
+	   ${SRC_DIR}/create_philo.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/05 15:23:31 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/05 23:40:11 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@
 
 typedef struct s_fork
 {
-	int id;
-}		t_fork;
+	int				id;
+	pthread_mutex_t mutex;
+}					t_fork;
 
 typedef struct s_philo
 {
 	int				id;
+	long			start_time;
+	long			last_meal;
+	int				meals_had;
 	struct s_table	*table;
+	pthread_t		philo;
 	struct s_fork	*right_fork;
 	struct s_fork	*left_fork;
 }					t_philo;
@@ -50,5 +55,6 @@ int		init_table(int argc, char **argv, t_table *table);
 void	dinner(t_table *table);
 int		ft_isdigit(char c);
 int		ft_atoi(char *str);
+t_philo	*creat_philo(int id, t_table *table);
 
 #endif

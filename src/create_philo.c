@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_table.c                                       :+:      :+:    :+:   */
+/*   create_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 22:58:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/05 23:40:27 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/05 22:46:04 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/05 23:40:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	init_philo(t_table *table)
+t_philo	*create_philo(int id, t_table *table)
 {
-	int	i;
+	t_philo	philo;
 
-	i = 0;
-}
-
-int	init_table(int argc, char **argv, t_table *table)
-{
-	table->philo_nbr = ft_atoi(argv[1]);
-	table->die_time = ft_atoi(argv[2]);
-	table->eat_time = ft_atoi(argv[3]);
-	table->sleep_time = ft_atoi(argv[4]);
-	if (argc == 6)
-		table->satisfied_nbr = ft_atoi(argv[5]);
+	if (!(philo = malloc(sizeof(t_philo))))
+	{
+		write(2, "Error when alloc t_philo\n", 25);
+		return (NULL);
+	}
+	philo->id = id;
+	philo->table = table;
 	
-	return (0);
+	return (philo);
 }
