@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 22:46:04 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/06 21:03:32 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/06 23:22:29 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	config_philo(t_philo *philo, int id, t_table *table)
 {
-	t_philo	philo;
-
 	philo->id = id;
 	philo->table = table;
 	philo->start_time = get_current_time();
 	philo->last_meal = philo->start_time;
 	philo->meals_had = 0;
-	philo->left_fork = table->forks[id];
+	philo->left_fork = &table->forks[id];
 	if (id == table->philo_nbr)
-		philo->right_fork = table->forks[0];
+		philo->right_fork = &table->forks[0];
 	else
-		philo->right_fork = table->forks[id + 1];
+		philo->right_fork = &table->forks[id + 1];
 }

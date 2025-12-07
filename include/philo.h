@@ -41,8 +41,8 @@ typedef struct s_philo
 typedef struct s_table
 {
 	pthread_t		monitor;
-	struct t_philo	*philos;
-	struct t_fork	*forks;
+	struct s_philo	*philos;
+	struct s_fork	*forks;
 	int				philo_nbr;
 	int				die_time;
 	int				eat_time;

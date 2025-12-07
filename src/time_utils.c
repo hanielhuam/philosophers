@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 23:20:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/06 19:19:48 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/06 23:23:22 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ long	get_current_time(void)
 	time_ms = 0l;
 	gettimeofday(&time, NULL);
 	time_ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (time_ml);
+	return (time_ms);
 }
