@@ -8,7 +8,8 @@ INCLUDE = -Iinclude
 SRCS = ${SRC_DIR}/philo.c ${SRC_DIR}/validate_args.c ${SRC_DIR}/init_table.c \
 	   ${SRC_DIR}/dinner.c ${SRC_DIR}/number_utils.c \
 	   ${SRC_DIR}/config_philo.c ${SRC_DIR}/time_utils.c \
-	   ${SRC_DIR}/del_table.c
+	   ${SRC_DIR}/del_table.c ${SRC_DIR}/monitor_action.c \
+	   ${SRC_DIR}/philo_action.c
 
 OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 

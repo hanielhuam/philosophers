@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dinner.c                                           :+:      :+:    :+:   */
+/*   philo_action.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 23:00:35 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 17:26:19 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/07 18:10:07 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	dinner(t_table *table)
+void	*philo_action(void *content)
 {
-	int	i;
+	t_philo	*philo;
 
-	pthread_create(&table->monitor, NULL, &monitor_action, &table);
-	i = 0;
-	while (i < table->philo_nbr)
-	{
-		pthread_create(&table->philos[i].philo, NULL, &philo_action, \
-				&table->philos[i]);
-		i++;
-	}
-	pthread_join(table->monitor, NULL);
-	i = 0;
-	while (i < table->philo_nbr)
-		pthread_join(table->philos[i++].philo, NULL);
+	philo = (t_philo *)content;
+	if (pthread_mutex_lock(&philo->table->print_mutex))
+		write(1, "impossible_lock\n", 16);
+	printf("This is philo %d and start now\n", philo->id);
+	if (pthread_mutex_unlock(&philo->table->print_mutex))
+		write(1, "impossible_unlock\n", 18);
+	usleep(1000000);
+	return (NULL);
 }

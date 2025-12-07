@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dinner.c                                           :+:      :+:    :+:   */
+/*   monitor_action.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/04 23:00:35 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 17:26:19 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/07 16:17:59 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/07 19:24:41 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	dinner(t_table *table)
+void	*monitor_action(void *content)
 {
-	int	i;
+	t_table	*table;
 
-	pthread_create(&table->monitor, NULL, &monitor_action, &table);
-	i = 0;
-	while (i < table->philo_nbr)
-	{
-		pthread_create(&table->philos[i].philo, NULL, &philo_action, \
-				&table->philos[i]);
-		i++;
-	}
-	pthread_join(table->monitor, NULL);
-	i = 0;
-	while (i < table->philo_nbr)
-		pthread_join(table->philos[i++].philo, NULL);
+	table = (t_table *)content;
+	(void)table;
+	pthread_mutex_lock(&table->print_mutex);
+	write(1, "O monitor apareceu\n", 19);
+	pthread_mutex_unlock(&table->print_mutex);
+	usleep(1000000);
+	return (NULL);
 }

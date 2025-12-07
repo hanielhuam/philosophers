@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/06 20:33:00 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/07 16:20:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int		ft_atoi(char *str);
 void	config_philo(t_philo *philo, int id, t_table *table);
 long	get_current_time(void);
 void    del_table(t_table *table);
+void	*monitor_action(void *content);
+void	*philo_action(void *content);
 
 #endif
