@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   config_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 23:20:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/06 19:19:48 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/05 22:46:04 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/06 21:03:32 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	get_current_time(void)
+void	config_philo(t_philo *philo, int id, t_table *table)
 {
-	struct timeval	time;
-	long			time_ms;
+	t_philo	philo;
 
-	time_ms = 0l;
-	gettimeofday(&time, NULL);
-	time_ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (time_ml);
+	philo->id = id;
+	philo->table = table;
+	philo->start_time = get_current_time();
+	philo->last_meal = philo->start_time;
+	philo->meals_had = 0;
+	philo->left_fork = table->forks[id];
+	if (id == table->philo_nbr)
+		philo->right_fork = table->forks[0];
+	else
+		philo->right_fork = table->forks[id + 1];
 }

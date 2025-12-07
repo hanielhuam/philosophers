@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/05 23:40:11 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/06 20:33:00 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo
 
 typedef struct s_table
 {
+	pthread_t		monitor;
 	struct t_philo	*philos;
 	struct t_fork	*forks;
 	int				philo_nbr;
@@ -48,6 +49,8 @@ typedef struct s_table
 	int				sleep_time;
 	int				satisfied_nbr;
 	int				any_one_died;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	dead_mutex;
 }					t_table;
 
 int 	validate_args(int argc, char **argv);
@@ -55,6 +58,8 @@ int		init_table(int argc, char **argv, t_table *table);
 void	dinner(t_table *table);
 int		ft_isdigit(char c);
 int		ft_atoi(char *str);
-t_philo	*creat_philo(int id, t_table *table);
+void	config_philo(t_philo *philo, int id, t_table *table);
+long	get_current_time(void);
+void    del_table(t_table *table);
 
 #endif
