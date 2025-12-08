@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 22:38:14 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:27:10 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_philo
 	long			start_time;
 	long			last_meal;
 	int				meals_had;
+	int				is_eating;
 	struct s_table	*table;
 	pthread_t		philo;
 	struct s_fork	*right_fork;
@@ -57,7 +58,7 @@ typedef struct s_table
 	int				any_one_died;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	dead_mutex;
-	pthread_mutex_t is_eating;
+	pthread_mutex_t is_eating_mutex;
 }					t_table;
 
 int 	validate_args(int argc, char **argv);

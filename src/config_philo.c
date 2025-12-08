@@ -19,6 +19,7 @@ void	config_philo(t_philo *philo, int id, t_table *table)
 	philo->start_time = get_current_time();
 	philo->last_meal = philo->start_time;
 	philo->meals_had = 0;
+	philo->is_eating = 0;
 	philo->left_fork = &table->forks[id];
 	if (id == table->philo_nbr)
 		philo->right_fork = &table->forks[0];

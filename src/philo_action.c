@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 23:21:57 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:27:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void	*philo_action(void *content)
 	t_philo	*philo;
 
 	philo = (t_philo *)content;
-	(pthread_mutex_lock(&philo->table->print_mutex);
-	printf("This is philo %d and start now\n", philo->id);
-	pthread_mutex_unlock(&philo->table->print_mutex);
-	usleep(1000000);
+
 	return (NULL);
 }
