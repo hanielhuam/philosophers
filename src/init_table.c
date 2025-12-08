@@ -69,6 +69,7 @@ int	init_table(int argc, char **argv, t_table *table)
 	table->any_one_died = 0;
 	pthread_mutex_init(&table->print_mutex, NULL);
 	pthread_mutex_init(&table->dead_mutex, NULL);
+	pthread_mutex_init(&table->is_eating, NULL);
 	table->philos = NULL;
 	table->forks = NULL;
 	if (init_forks(table) || init_philo(table))

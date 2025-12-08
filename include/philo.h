@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 16:20:35 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/07 22:38:14 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+# define DEAD = "%ld ms %d died\n"
+# define THINK = "%ld ms %d is thiking\n"
+# define SLEEP = "%ld ms %d is sleeping\n"
+# define EAT = "%ld ms %d is eating\n"
+# define FORK = "%ld ms %d has taken a fork\n"
 
 typedef struct s_fork
 {
@@ -51,6 +57,7 @@ typedef struct s_table
 	int				any_one_died;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	dead_mutex;
+	pthread_mutex_t is_eating;
 }					t_table;
 
 int 	validate_args(int argc, char **argv);
@@ -63,5 +70,6 @@ long	get_current_time(void);
 void    del_table(t_table *table);
 void	*monitor_action(void *content);
 void	*philo_action(void *content);
+void    print_mensage(char *str, int id, long time, pthread_mutex *mutex);
 
 #endif

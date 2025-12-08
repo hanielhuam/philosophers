@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_action.c                                     :+:      :+:    :+:   */
+/*   print_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 23:21:57 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/07 20:15:43 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/07 20:22:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_action(void *content)
+void	print_mensage(char *str, int id, long time, pthread_mutex *mutex)
 {
-	t_philo	*philo;
-
-	philo = (t_philo *)content;
-	(pthread_mutex_lock(&philo->table->print_mutex);
-	printf("This is philo %d and start now\n", philo->id);
-	pthread_mutex_unlock(&philo->table->print_mutex);
-	usleep(1000000);
-	return (NULL);
+	pthread_mutex_lock(mutex);
+	printf(str, time, id);
+	pthread_mutex_unlock(mutex);
 }
