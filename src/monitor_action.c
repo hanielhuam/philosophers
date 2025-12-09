@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:17:59 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/08 17:27:06 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/08 21:24:30 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static int	is_everybody_satisfied(t_table *table)
 	i = 0;
 	while (i < table->philo_nbr)
 	{
-		pthread_mutex_lock(&table->is_eating);
+		pthread_mutex_lock(&table->is_eating_mutex);
 		if (table->philos[i].meals_had < table->satisfied_nbr)
 		{
-			pthread_mutex_unlock(&table->is_eating);
+			pthread_mutex_unlock(&table->is_eating_mutex);
 			return (0):
 		}
-		pthread_mutex_unlock(&table->is_eating);
+		pthread_mutex_unlock(&table->is_eating_mutex);
 	}
 	return (1);
 }
