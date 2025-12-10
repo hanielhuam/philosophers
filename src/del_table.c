@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 19:55:42 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/07 23:22:50 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:40:32 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	del_table(t_table *table)
 		free(table->philos);
 	pthread_mutex_destroy(&table->print_mutex);
 	pthread_mutex_destroy(&table->dead_mutex);
-	pthread_mutex_destroy(&table->is_eating);
+	pthread_mutex_destroy(&table->is_eating_mutex);
 	free(table);
 }

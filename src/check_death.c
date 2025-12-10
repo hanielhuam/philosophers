@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   check_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/05 23:20:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/09 21:15:37 by hmacedo-         ###   ########.fr       */
+/*   Created: 2025/12/08 22:56:22 by hmacedo-          #+#    #+#             */
+/*   Updated: 2025/12/08 23:56:38 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-unsigned long	get_current_time(void)
+int	check_death(t_philo *philo)
 {
-	struct timeval	time;
-	long			time_ms;
+	int	result;
 
-	time_ms = 0l;
-	gettimeofday(&time, NULL);
-	time_ms = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (time_ms);
+	result = 0;
+	pthread_mutex_lock(&philo->table->dead_mutex);
+	if (philo->table->any_one_died)
+		result = 1;
+	pthread_mutex_unlock(&philo->table->dead_mutex);
+	return (result);
 }

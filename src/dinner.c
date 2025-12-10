@@ -16,7 +16,7 @@ void	dinner(t_table *table)
 {
 	int	i;
 
-	pthread_create(&table->monitor, NULL, &monitor_action, &table);
+	pthread_create(&table->monitor, NULL, &monitor_action, table);
 	i = 0;
 	while (i < table->philo_nbr)
 	{

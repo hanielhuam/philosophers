@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/08 17:27:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:04:24 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define DEAD = "%ld ms %d died\n"
-# define THINK = "%ld ms %d is thiking\n"
-# define SLEEP = "%ld ms %d is sleeping\n"
-# define EAT = "%ld ms %d is eating\n"
-# define FORK = "%ld ms %d has taken a fork\n"
+# define DEAD "%ld ms %d died\n"
+# define THINK "%ld ms %d is thiking\n"
+# define SLEEP "%ld ms %d is sleeping\n"
+# define EAT "%ld ms %d is eating\n"
+# define FORK "%ld ms %d has taken a fork\n"
 
 typedef struct s_fork
 {
@@ -35,8 +35,8 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int				id;
-	long			start_time;
-	long			last_meal;
+	unsigned long	start_time;
+	unsigned long	last_meal;
 	int				meals_had;
 	int				is_eating;
 	struct s_table	*table;
@@ -61,16 +61,20 @@ typedef struct s_table
 	pthread_mutex_t is_eating_mutex;
 }					t_table;
 
-int 	validate_args(int argc, char **argv);
-int		init_table(int argc, char **argv, t_table *table);
-void	dinner(t_table *table);
-int		ft_isdigit(char c);
-int		ft_atoi(char *str);
-void	config_philo(t_philo *philo, int id, t_table *table);
-long	get_current_time(void);
-void    del_table(t_table *table);
-void	*monitor_action(void *content);
-void	*philo_action(void *content);
-void    print_mensage(char *str, int id, long time, pthread_mutex *mutex);
+int 			validate_args(int argc, char **argv);
+int				init_table(int argc, char **argv, t_table *table);
+void			dinner(t_table *table);
+int				ft_isdigit(char c);
+int				ft_atoi(char *str);
+void			config_philo(t_philo *philo, int id, t_table *table);
+unsigned long	get_current_time(void);
+void    		del_table(t_table *table);
+void			*monitor_action(void *content);
+void			*philo_action(void *content);
+void    		print_mensage(char *str, int id, long time, \
+		pthread_mutex_t *mutex);
+int				check_death(t_philo *philo);
+int				take_a_fork(t_philo *philo, t_fork *fork);
+void			unlock_forks(t_philo *philo);
 
 #endif

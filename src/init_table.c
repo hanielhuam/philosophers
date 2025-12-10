@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 22:58:45 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/06 23:20:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:39:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	init_table(int argc, char **argv, t_table *table)
 	table->any_one_died = 0;
 	pthread_mutex_init(&table->print_mutex, NULL);
 	pthread_mutex_init(&table->dead_mutex, NULL);
-	pthread_mutex_init(&table->is_eating, NULL);
+	pthread_mutex_init(&table->is_eating_mutex, NULL);
 	table->philos = NULL;
 	table->forks = NULL;
 	if (init_forks(table) || init_philo(table))
