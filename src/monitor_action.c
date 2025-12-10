@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:17:59 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/09 22:12:10 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/09 22:50:46 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	look_for_death(t_table *table)
 			pthread_mutex_lock(&table->dead_mutex);
 			table->any_one_died = 1;
 			pthread_mutex_unlock(&table->dead_mutex);
-			print_mensage(DEAD, i, table->philos[i].start_time - \
-					get_current_time(), &table->print_mutex);
+			print_mensage(DEAD, i, get_current_time() - \
+					table->philos[i].start_time, &table->print_mutex);
 			return (1);
 		}
 		i++;

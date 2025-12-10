@@ -21,7 +21,7 @@ void	config_philo(t_philo *philo, int id, t_table *table)
 	philo->meals_had = 0;
 	philo->is_eating = 0;
 	philo->left_fork = &table->forks[id];
-	if (id == table->philo_nbr)
+	if (id == table->philo_nbr - 1)
 		philo->right_fork = &table->forks[0];
 	else
 		philo->right_fork = &table->forks[id + 1];
