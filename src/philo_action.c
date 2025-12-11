@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/09 20:56:51 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/11 19:53:49 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,23 @@ static int	sleep_and_think(t_philo *philo)
 	return (0);
 }
 
+static int	one_philo(t_philo *philo)
+{
+	if (!take_a_fork(philo, philo->right_fork))
+	{
+		usleep(philo->table->die_time);
+		pthread_mutex_unlock(&philo->right_fork->mutex);
+	}
+	return (1);
+}
+
 void	*philo_action(void *content)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)content;
+	if (philo->table->philo_nbr == 1 && one_philo(philo))
+		return (NULL);
 	if (philo->id % 2)
 		usleep(500);
 	while (1)
