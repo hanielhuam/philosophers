@@ -78,7 +78,7 @@ void	*monitor_action(void *content)
 			break ;
 		if (is_everybody_satisfied(table))
 			break ;
-		usleep(5);
+		precision_sleep(5);
 	}
 	return (NULL);
 }

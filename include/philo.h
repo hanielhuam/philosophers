@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 15:41:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:38:02 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # define THINK "%ld ms %d is thiking\n"
 # define SLEEP "%ld ms %d is sleeping\n"
 # define EAT "%ld ms %d is eating\n"
-# define FORK "%ld ms %d has taken a fork\n"
+# define FORK "%ld ms %d has taken a fork"
 
 typedef struct s_fork
 {
 	int				id;
-	pthread_mutex_t mutex;
+	pthread_mutex_t	mutex;
 }					t_fork;
 
 typedef struct s_philo
@@ -57,23 +57,26 @@ typedef struct s_table
 	int				any_one_died;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	dead_mutex;
-	pthread_mutex_t is_eating_mutex;
+	pthread_mutex_t	is_eating_mutex;
 }					t_table;
 
-int 			validate_args(int argc, char **argv);
+int				validate_args(int argc, char **argv);
 int				init_table(int argc, char **argv, t_table *table);
 void			dinner(t_table *table);
 int				ft_isdigit(char c);
 int				ft_atoi(char *str);
 void			config_philo(t_philo *philo, int id, t_table *table);
 unsigned long	get_current_time(void);
-void    		del_table(t_table *table);
+void			del_table(t_table *table);
 void			*monitor_action(void *content);
 void			*philo_action(void *content);
-void    		print_mensage(char *str, int id, long time, \
+void			print_mensage(char *str, int id, long time, \
 		pthread_mutex_t *mutex);
+void	print_mensage_fork(char *str, int id, long time, \
+		pthread_mutex_t *mutex, int fork_id);
 int				check_death(t_philo *philo);
 int				take_a_fork(t_philo *philo, t_fork *fork);
 void			unlock_forks(t_philo *philo);
+void			precision_sleep(unsigned long time);
 
 #endif

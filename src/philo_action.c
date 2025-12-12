@@ -52,7 +52,7 @@ static int	eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->table->is_eating_mutex);
 	print_mensage(EAT, philo->id, get_current_time() - philo->start_time, \
 			&philo->table->print_mutex);
-	usleep(philo->table->eat_time * 1000);
+	precision_sleep(philo->table->eat_time * 1000);
 	pthread_mutex_lock(&philo->table->is_eating_mutex);
 	philo->is_eating = 0;
 	pthread_mutex_unlock(&philo->table->is_eating_mutex);
@@ -66,7 +66,7 @@ static int	sleep_and_think(t_philo *philo)
 		return (1);
 	print_mensage(SLEEP, philo->id, get_current_time() - philo->start_time, \
 			&philo->table->print_mutex);
-	usleep(philo->table->sleep_time);
+	precision_sleep(philo->table->sleep_time * 1000);
 	if (check_death(philo))
 		return (1);
 	print_mensage(THINK, philo->id, get_current_time() - philo->start_time, \
@@ -78,7 +78,7 @@ static int	one_philo(t_philo *philo)
 {
 	if (!take_a_fork(philo, philo->right_fork))
 	{
-		usleep(philo->table->die_time);
+		precision_sleep(philo->table->die_time * 1000);
 		pthread_mutex_unlock(&philo->right_fork->mutex);
 	}
 	return (1);
@@ -92,7 +92,7 @@ void	*philo_action(void *content)
 	if (philo->table->philo_nbr == 1 && one_philo(philo))
 		return (NULL);
 	if (philo->id % 2)
-		usleep(500);
+		precision_sleep(500);
 	while (1)
 	{
 		if (take_forks(philo) || eat(philo))

@@ -6,13 +6,13 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 21:39:46 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/05 15:33:07 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/12 17:36:57 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int is_valid_number(char *str)
+static int	is_valid_number(char *str)
 {
 	char	*init;
 
