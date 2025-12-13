@@ -18,12 +18,3 @@ void	print_mensage(char *str, int id, long time, pthread_mutex_t *mutex)
 	printf(str, time, id);
 	pthread_mutex_unlock(mutex);
 }
-
-void	print_mensage_fork(char *str, int id, long time, \
-		pthread_mutex_t *mutex, int fork_id)
-{
-	pthread_mutex_lock(mutex);
-	printf(str, time, id);
-	printf(" %d \n", fork_id);
-	pthread_mutex_unlock(mutex);
-}

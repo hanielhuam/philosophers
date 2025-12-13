@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 18:38:02 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/12 21:45:55 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define THINK "%ld ms %d is thiking\n"
 # define SLEEP "%ld ms %d is sleeping\n"
 # define EAT "%ld ms %d is eating\n"
-# define FORK "%ld ms %d has taken a fork"
+# define FORK "%ld ms %d has taken a fork\n"
 
 typedef struct s_fork
 {
@@ -72,8 +72,6 @@ void			*monitor_action(void *content);
 void			*philo_action(void *content);
 void			print_mensage(char *str, int id, long time, \
 		pthread_mutex_t *mutex);
-void	print_mensage_fork(char *str, int id, long time, \
-		pthread_mutex_t *mutex, int fork_id);
 int				check_death(t_philo *philo);
 int				take_a_fork(t_philo *philo, t_fork *fork);
 void			unlock_forks(t_philo *philo);

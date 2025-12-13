@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 23:57:43 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 17:01:40 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/12 21:44:19 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	take_a_fork(t_philo *philo, t_fork *fork)
 		pthread_mutex_unlock(&fork->mutex);
 		return (1);
 	}
-	print_mensage_fork(FORK, philo->id, get_current_time() - philo->start_time,\
-			&philo->table->print_mutex, fork->id);
+	print_mensage(FORK, philo->id, get_current_time() - philo->start_time, \
+			&philo->table->print_mutex);
 	return (0);
 }
 
