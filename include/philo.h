@@ -19,11 +19,11 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define DEAD "%ld ms %d died\n"
-# define THINK "%ld ms %d is thiking\n"
-# define SLEEP "%ld ms %d is sleeping\n"
-# define EAT "%ld ms %d is eating\n"
-# define FORK "%ld ms %d has taken a fork\n"
+# define DEAD "%ld %d died\n"
+# define THINK "%ld %d is thiking\n"
+# define SLEEP "%ld %d is sleeping\n"
+# define EAT "%ld %d is eating\n"
+# define FORK "%ld %d has taken a fork\n"
 
 typedef struct s_fork
 {

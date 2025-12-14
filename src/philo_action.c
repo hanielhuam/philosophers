@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 12:18:54 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:14:56 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ static int	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->table->is_eating_mutex);
 	philo->is_eating = 1;
 	philo->last_meal = get_current_time();
-	if (philo->table->satisfied_nbr)
-		philo->meals_had++;
 	pthread_mutex_unlock(&philo->table->is_eating_mutex);
 	print_mensage(EAT, philo->id, get_current_time() - philo->start_time, \
 			&philo->table->print_mutex);
 	precision_sleep(philo->table->eat_time * 1000);
 	pthread_mutex_lock(&philo->table->is_eating_mutex);
 	philo->is_eating = 0;
+	if (philo->table->satisfied_nbr)
+		philo->meals_had++;
 	pthread_mutex_unlock(&philo->table->is_eating_mutex);
 	unlock_forks(philo);
 	return (0);

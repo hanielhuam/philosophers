@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:17:59 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/09 22:50:46 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/13 20:43:47 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static int	philo_has_died(t_philo *philo)
 	result = 0;
 	pthread_mutex_lock(&philo->table->is_eating_mutex);
 	if (philo->last_meal + philo->table->die_time < get_current_time() \
-			&& !philo->is_eating)
+			&& !philo->is_eating \
+			&& philo->meals_had < philo->table->satisfied_nbr)
 		result = 1;
 	pthread_mutex_unlock(&philo->table->is_eating_mutex);
 	return (result);
