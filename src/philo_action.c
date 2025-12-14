@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:31:05 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/13 18:14:56 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/14 00:29:35 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void	*philo_action(void *content)
 	{
 		if (take_forks(philo) || eat(philo))
 			break ;
+		if (sleep_and_think(philo))
+			break ;
 		if (philo->table->satisfied_nbr && \
 				philo->meals_had >= philo->table->satisfied_nbr)
-			break ;
-		if (sleep_and_think(philo))
 			break ;
 	}
 	return (NULL);
