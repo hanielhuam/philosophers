@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 20:03:18 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 21:45:55 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:18:15 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void			print_mensage(char *str, int id, long time, \
 int				check_death(t_philo *philo);
 int				take_a_fork(t_philo *philo, t_fork *fork);
 void			unlock_forks(t_philo *philo);
-void			precision_sleep(unsigned long time);
+void			msleep(unsigned long time);
 
 #endif

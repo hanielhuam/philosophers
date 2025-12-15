@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 16:17:59 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/14 20:31:15 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:21:50 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	*monitor_action(void *content)
 			break ;
 		if (is_everybody_satisfied(table))
 			break ;
-		precision_sleep(5);
+		usleep(5);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: hmacedo- <hanielhuam@hotmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 23:20:16 by hmacedo-          #+#    #+#             */
-/*   Updated: 2025/12/12 18:37:20 by hmacedo-         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:21:27 by hmacedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,13 @@ unsigned long	get_current_time(void)
 	return (time_ms);
 }
 
-void	precision_sleep(unsigned long time)
+void	msleep(unsigned long time)
 {
-	struct timeval	spected_time;
-	struct timeval	current_time;
+	unsigned long	start_time;
 
 	if (time == 0l)
 		return ;
-	gettimeofday(&current_time, NULL);
-	spected_time.tv_sec = current_time.tv_sec + time / 1000000;
-	spected_time.tv_usec = current_time.tv_usec + time % 1000000;
-	while (spected_time.tv_sec >= current_time.tv_sec && \
-			spected_time.tv_usec > current_time.tv_usec)
-		gettimeofday(&current_time, NULL);
+	start_time = get_current_time();
+	while (start_time + time > get_current_time())
+		usleep(500);
 }
